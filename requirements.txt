@@ -1,0 +1,6 @@
+bs4
+langchain
+langchain_community
+langchain-ollama
+langchain_milvus
+tiktoken
