@@ -24,7 +24,7 @@ text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
 embeddings = OllamaEmbeddings(model=EMBEDDINGS_MODEL)
 
 docs = [WebBaseLoader(url).load() for url in URLS]
-doc_splits = text_splitter.split_documents(docs)
+doc_splits = text_splitter.split_documents(docs[0])
 
 Milvus.from_documents(
     documents=doc_splits,
