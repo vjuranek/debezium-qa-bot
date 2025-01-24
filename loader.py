@@ -30,7 +30,7 @@ Milvus.from_documents(
     documents=doc_splits,
     embedding=embeddings,
     connection_args={
-        "uri": "./dbz_documentation.db",
+        "host": "127.0.0.1:19530",
     },
     drop_old=True,
 )
