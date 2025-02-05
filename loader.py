@@ -21,6 +21,10 @@ URLS = [
     # "https://debezium.io/documentation/reference/3.0/connectors/oracle.html",
 ]
 
+# configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format=("%(levelname)-5s [%(name)s] %(message)s"))
 log = logging.getLogger("loader")
 
 text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
