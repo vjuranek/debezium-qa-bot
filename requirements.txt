@@ -1,4 +1,5 @@
 bs4
+flask
 langchain
 langchain_community
 langchain-ollama

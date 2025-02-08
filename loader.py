@@ -2,6 +2,7 @@
 
 import logging
 
+from flask import Flask
 from langchain_community.document_loaders import WebBaseLoader
 from langchain_milvus import Milvus
 from langchain_ollama import ChatOllama
@@ -27,11 +28,15 @@ logging.basicConfig(
     format=("%(levelname)-5s [%(name)s] %(message)s"))
 log = logging.getLogger("loader")
 
+app = Flask("loader")
+
 text_splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
     chunk_size=CHUNK_SIZE, chunk_overlap=CHUNK_OVERLAP)
 embeddings = OllamaEmbeddings(model=EMBEDDINGS_MODEL)
 
-def load_from_url(url):
+@app.route("/load")
+def load_from_url():
+    url = URLS[0]
     log.info(f"Processing URL {url!r}")
     docs = WebBaseLoader(url).load()
     doc_split = text_splitter.split_documents([doc for doc in docs])
@@ -48,5 +53,5 @@ def load_from_url(url):
 
 
 if __name__ == "__main__":
-    load_from_url(URLS[0])
+    app.run()
     
