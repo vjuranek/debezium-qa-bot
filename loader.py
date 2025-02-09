@@ -50,6 +50,7 @@ def load_from_url():
         },
         drop_old=True,
     )
+    return f"Loaded {url}"
 
 
 if __name__ == "__main__":
